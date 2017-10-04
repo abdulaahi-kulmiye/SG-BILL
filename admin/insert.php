@@ -18,7 +18,8 @@
         }
         //if(query != ''){
             if(mysqli_multi_query($connect, $query)){
-                echo 'successfull inserted';
+                //echo '<script>alert("one row inserted");</script>';
+                 echo 'successfull inserted';
                 //echo "<script>alert('fsdfsd');</script>";
             }
             else{

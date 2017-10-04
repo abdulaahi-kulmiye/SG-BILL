@@ -1,7 +1,7 @@
 <?php
-    if(isset($_GET["invoiceItem"])){
+    if(isset($_GET["item"])){
         include("connection.php");
-        $invoicesID = $_GET["invoiceItem"];
+        $invoicesID = $_GET["item"];
         $sql = "select product_price from products where product_name = '$invoicesID'";
         $do = mysqli_query($conn, $sql);
         $count = mysqli_num_rows($do);

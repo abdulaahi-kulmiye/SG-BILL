@@ -32,12 +32,12 @@
 					
 					<div class="input-group margin-bottom-sm">
 					<span class="input-group-addon" ><span class= "fa fa-user fa-lg"></span></span>
-					<input type="text" name="username" placeholder="username" required class="form-control input-lg" />
+					<input type="text" name="username" placeholder="username" autocomplete="off" required class="form-control input-lg" />
 					</div>
 					<p style="margin-bottom:10px"></p>
 						<div class="input-group">
 					<span class="input-group-addon" ><i class= "fa fa-lock fa-lg"></i></span>
-					<input type="password" name="password" placeholder="Password" required class="form-control input-lg" />
+					<input type="password" name="password" placeholder="Password" autocomplete="off" required class="form-control input-lg" />
 					</div>
 				
 					<p style="margin-bottom:25px"></p>

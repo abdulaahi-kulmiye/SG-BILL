@@ -24,6 +24,7 @@
     <?php include("dashboardLinks.php"); ?>
     <?php include("links.php"); ?>
     <?php include("priceSearch.php"); ?>
+    <?php include("scripts.php"); ?>
     <style>
         .head {
             text-align:center;
@@ -90,7 +91,7 @@
                                             </span>
                                         </div>
                                     </div>
-                                     <script type="text/javascript">
+                                    <script type="text/javascript">
                                         $(function () {
                                             $('#datetimepicker1').datetimepicker();
                                         });
@@ -100,126 +101,65 @@
                                     <label for="invoiceNo">Invoice NO</label>
                                     <input type="text" name="invoiceNo" autocomplete="off" id="invoiceNo" class="form-control" />
                                 </div>
-                                <script>
-                                    /* xoogaa error ah baa haysta
-                                     * marka waaa laxalin xilaga ay munaasibka noqoto
-                                     * ciladu waa in uusan database-ka ka soo akhrinayn xogta
-                                     * ka dibna uu ka soo muujinayn field-ga loo baneeyay
-                                     * marka hada waxaa sii isticmaalayna isaga oo ah
-                                     * increment + 1
-                                     */
-                                    /*$(document).ready(function(){
-                                        //$(window).on("load", function(){
-                                            $("input[name=invoiceNo]").load("addInvoice.php", function(){
-                                            // no means invoice No
-                                            var no = $(this).val();
-                                            if(no){
-                                                $.get(
-                                                    "addInvoice.php",
-                                                    {no: no},
-                                                    function(data){
-                                                        $("#invoiceNo").val(data);
-                                                        alert(data);
-                                                    }
-                                                );
-                                            }
-                                        //});
-                                            });
-                                        
-                                    });*/
-
-                                   /* $(document).ready(function(){
-                                        $("#invoiceNew").on("click", function(){
-                                            $("input[name=invoiceQty]").val()+1;
-                                            window.location.href='addInvoice.php';
-                                        });
-                                        
-                                    })*/
-                                    
-
-                                </script>
                             </div><br>
                             <div class="row">
                                 <div class="col-sm-7">
                                     <label for="invoiceName">Customer Name</label>
                                     <input type="text" name="invoiceName" autocomplete="off" id="invoiceName" class="form-control">
                                     <div id="invoiceNameList"></div>
-                                    <!-- <select name="invoiceName" id="invoiceName" class="form-control">
-                                        </*?php
-                                            $sql = "select cus_name from customers";
-                                            $result = $conn->query($sql);
-                                            if($result->num_rows > 0) {
-                                                while($row = $result->fetch_assoc()) { ?*/>
-                                            <option value="<//?php echo $row['cus_name']; ?>"><//?php echo $row['cus_name']; ?></option>
-                                            </*?php }
-                                            }
-                                        ?*/>
-                                    </select> -->
                                 </div>
                                 <div class="col-sm-offset-5">
                                 </div>
                             </div><br>
                             <script>
                                 /// waa midka sameynaya dropdown items-ka
-                                $(document).ready(function(){
+                                /*$(document).ready(function(){
                                     $("#invoiceItem").on("change", function(){
-                                    var ItemID = $(this).val();
-                                    if(ItemID){
-                                        $.get(
-                                            "priceSearch.php",
-                                            {invoiceItem: ItemID},
-                                            function(data){
-                                                $("#invoicePrice").val(data);
-                                            }
-                                        );
-                                        
-                                    }
+                                        var ItemID = $(this).val();
+                                        if(ItemID){
+                                            $.get(
+                                                "priceSearch.php",
+                                                {invoiceItem: ItemID},
+                                                function(data){
+                                                    $("#invoicePrice").val(data);
+                                                }
+                                            );
+                                            
+                                        }
                                         else{
                                             $("#invoicePrice").html("enter");
                                         }
-                                });
-                                });
+                                    });
+                                });*/
                             </script>
-                            <table  id="dynamic_field">  
-                                <tr>  
-                                    <td>
-                                       <div class="class="name_list"" name="name[]">
-                                            <div class="row">
-                                                <div class="col-sm-5">
-                                                    <label for="invoiceItem">Item name</label>
-                                                    <select name="invoiceItem" id="invoiceItem" class="form-control">
-                                                        <?php
-                                                            $sql = "select product_name from products";
-                                                            $result = $conn->query($sql);
-                                                            if($result->num_rows > 0) {
-                                                                while($row = $result->fetch_assoc()) { ?>
-                                                            <option value="<?php echo $row['product_name']; ?>"><?php echo $row['product_name']; ?></option>
-                                                            <?php }
-                                                            }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <label for="invoiceQty">Quantity</label>
-                                                    <input type="number" name="invoiceQty" autocomplete="off" id="invoice" class="form-control">
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <label for="invoicePrice">Price</label>
-                                                    <input type="number" name="invoicePrice" autocomplete="off" id="invoicePrice" class="form-control" min="0">
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <label for="invoiceTotal">Total</label>
-                                                    <input type="number" name="invoiceTotal" autocomplete="off" id="invoiceTotal" class="form-control disable" min="0">
-                                                </div>
-                                                <script>
-                                                    
-                                                </script>
-                                            </div>
-                                        </div><br>
-                                        </td>  
-                                         <td><button type="button" name="add" id="add" class="btn btn-warning" style="margin-left:20px">Add More</button></td>  
-                                    </tr>  
-                               </table> 
+                            <!-- <div class="row">
+                                <div class="col-sm-5">
+                                    <label for="invoiceItem">Item name</label>
+                                    <select name="invoiceItem" id="invoiceItem" class="form-control">
+                                        </*?php
+                                            $sql = "select product_name from products";
+                                            $result = $conn->query($sql);
+                                            if($result->num_rows > 0) {
+                                                while($row = $result->fetch_assoc()) { ?>*/
+                                            <option value="<//?php echo $row['product_name']; ?>"><//?php echo $row['product_name']; ?></option>
+                                            <//?php }
+                                            }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label for="invoiceQty">Quantity</label>
+                                    <input type="number" name="invoiceQty" autocomplete="off" id="invoice" class="form-control">
+                                </div>
+                                <div class="col-sm-2">
+                                    <label for="invoicePrice">Price</label>
+                                    <input type="number" name="invoicePrice" autocomplete="off" id="invoicePrice" class="form-control" min="0">
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="invoiceTotal">Total</label>
+                                    <input type="number" name="invoiceTotal" autocomplete="off" id="invoiceTotal" class="form-control disable" min="0">
+                                </div>
+                            </div><br> -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <table class="table table-bordered" id="crud_table">
@@ -231,17 +171,19 @@
                                             <th></th>
                                         </tr>
                                         <tr id="bb">
-                                            <td contenteditable="true" class="itemName" id="itemSearch"></td>
+                                            <td contenteditable="true" name="itemName" class="itemName" id="itemSearch"></td>
                                             <td contenteditable="true" id="invoiceQty" class="itemQty"></td>
                                             <td contenteditable="true" id="invoicePrice" class="itemPrice"></td>
                                             <td contenteditable="true" id="invoiceTotal" class="itemTotal"></td>
                                         </tr>
+                                        
                                     </table>
+                                    <div id="NameCustomerList" style="background-color:red; color:white; width: 300px;"></div>
                                     <div align="right">
                                         <button type="button" id="addMore" class="btn btn-warning">Add More</button>
                                     </div>
                                     <div align="center">
-                                        <button type="button" id="save" name="save" class="btn btn-primary">Save</button>
+                                        <!-- <button type="button" id="save" name="save" class="btn btn-primary">Save</button> -->
                                     </div>
                                 </div>                                
                             </div><br><br>
@@ -250,25 +192,14 @@
                                     <button type="submit" name="invoiceSave" id="invoiceSave" class="btn btn-success btn-block">Save & Close</button>
                                 </div>
                                 <div class="col-sm-2">
-                                    <button type="submit" name="invoiceNew" id="invoiceNew" class="btn btn-info btn-block">Save & New</button>
+                                    <button type="submit" name="invoiceSave" id="invoiceNew" class="btn btn-info btn-block">Save & New</button>
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="reset" name="invoiceReset" class="btn btn-danger btn-block">Clear</button>
                                 </div>
                                 
                             </div>
-                        </form><button id="riix">riix</button>
-                        <script>
-                            $(document).ready(function(){
-                                var sum;
-                                parseInt($("input[name=invoiceNo]").val()) += sum;
-                                $("#riix").on("click", function(){
-                                    sum++;
-                                $("input[name=invoiceNo]").val(sum);
-                                   // alert("fsd");
-                                });
-                            });
-                        </script>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -282,6 +213,7 @@
 <script>
     /* for outocomplete the customer name */
     $(document).ready(function(){
+    /* wuxuu soo taxayaa liiska macaamiisha diiwan gishan */
         $("#invoiceName").keyup(function(){
             var query = $(this).val();
             if(query != ''){
@@ -296,39 +228,75 @@
                 });
             }
         });
-        $("#itemSearch").keyup(function(){
-            var searchs = $(this).val();
-            if(searchs != ''){
-                $.ajax({
-                    url:"searchInvoiceCustomer.php",
-                    method: "POST",
-                    data:{searchs:searchs},
-                    success:function(data){
-                        //$("#invoiceNameList").fadeIn();
-                        //$("#invoiceNameList").html(data);
-                        alert(data);
-                    }
-                });
-            }
-        });
-        $(document).on("click", "li", function(){
+         $(document).on("click", "#customer", function(){
             $("#invoiceName").val($(this).text());
             $("#invoiceNameList").fadeOut();
         });
         $(document).on("click", function(){
             $("#invoiceNameList").fadeOut();
         });
-        /*===========================================*/
+    /* halkan buu ku dhamaada code-ka customers-ka soo akhrinaya
+    /*=====================================================================*/
+    /**************************************************************************/
+    /*=====================================================================*/
+
+    /* wuxuu soo taxayaa liiska alaabta diiwan gishan */
+        $(".itemName").keyup(function(){
+            var searchs = $(this).text();
+            if(searchs != ''){
+                $.ajax({
+                    url:"scripts.php",
+                    method: "POST",
+                    data:{searchs:searchs},
+                    success:function(data){
+                        $("#NameCustomerList").fadeIn();
+                        $("#NameCustomerList").html(data);
+                    }
+                });
+            }
+        });
+        $(document).on("click", "#item", function(){
+            $("#itemSearch").text($(this).text());
+            $("#NameCustomerList").fadeOut();
+        });
+        $(document).on("click", function(){
+            $("#NameCustomerList").fadeOut();
+        });
+
+        //$("#invoiceItem").on("change", function(){
+        $("document").on("click", "#item", function(){
+            //var ItemID = $(this).text();
+            var ItemID = $("#itemSearch").text($(this).text());
+            alert("hjhj");
+            if(ItemID){
+                $.get(
+                    "priceSearch.php",
+                    {item: ItemID},
+                    function(data){
+                        //$(".itemPrice").text(data);
+                        alert(data);
+                    }
+                );
+                
+            }
+            else{
+                $("#invoicePrice").html("enter");
+            }
+        });
+        /* halkan buu ku dhamaada code-ka items-ka soo akhrinaya*/
+    /*=====================================================================*/
+    /**************************************************************************/
+    /*=====================================================================*/
 
         /* to multiply qty and price and produce result */
-        $("input").change(function(){
+        /*$("input").change(function(){
             var product = 0;
             $("input[name=invoiceQty]").each(function(){
                 //product = product - parseFloat($(this).val());
                 product = parseFloat($("input[name=invoiceQty").val()) * parseFloat($("input[name=invoicePrice").val());
-            })
+            });
             $("input[name=invoiceTotal").val(product);
-        });
+        });*/
         /*================================================*/
 
         /* save and close, save and new the generating code */
@@ -339,18 +307,19 @@
     
         $('#invoiceNew').click(function() {
             window.location.href = 'addInvoice.php';
-            var sum = 1;
-            $("input[name=invoiceQty]").val("45");
             return false;
         });
-
+        $("td[name=itemName]").click(function(){
+            var num = $(this).text();
+            alert(num);
+        })
 /* ********************************************************************** */
     /* for increasing the number of rows in table of items */
         var tirin = 1;
         $("#addMore").click(function(){
             tirin = tirin + 1;
             var query_code = "<tr id='row" + tirin + "'>";
-            query_code += "<td contenteditable='true' class='itemName'></td>";
+            query_code += "<td contenteditable='true' name='itemName' class='itemName'  id='itemSearch'></td>";
             query_code += "<td contenteditable='true' class='itemQty'></td>";
             query_code += "<td contenteditable='true' class='itemPrice'></td>";
             query_code += "<td contenteditable='true' class='itemTotal'></td>";
@@ -360,11 +329,10 @@
         });
 
         $(document).on('click', '.remove', function(){
-            //alert("ghghj");
             var deleteRow = $(this).data("row");
             $('#' + deleteRow).remove();
         });
-        $('#save').click(function(){
+        $('button[name=invoiceSave]').click(function(){
             var invoiceName = $("#invoiceName").val();
             var invoiceNo = $("#invoiceNo").val();
             var invoiceDate = $("#datepicker").val();            
@@ -397,33 +365,12 @@
                 }
             });
         });
-
-        /*$("td").change(function(){
-            var mult = 0;
-            alert("hjhh");
-            $("#invoiceQty").each(function(){
-                //product = product - parseFloat($(this).val());
-                mult = parseFloat($("#invoiceQty").text()) * parseFloat($("#invoicePrice").text());
-            })
-            alert(mult);
-            $("#invoiceTotal").text(mult);
-        });*/
-/* ********************************************************************** */        
+        $("#crud_table").keydown(function(){
+            var txt = 0;
+            $(".itemQty").each(function(){     
+                txt = parseFloat($(".itemQty").text()) * parseFloat($(".itemPrice").text());
+            });
+            $(".itemTotal").text(txt);
+        });
     });
-        
-</script>
-    
-
-    $(document).ready(function(){  
-        var i=1;  
-        $('#add').click(function(){  
-            i++;  
-            $('#dynamic_field').append('<tr id="row'+i+'"><td><div class="name_list"" name="name[]"><div class="row"  ><div class="col-sm-5"><select name="invoiceItem" id="invoiceItem" class="form-control"><?php$sql = "select product_name from products";$result = $conn->query($sql);if($result->num_rows > 0) {while($row = $result->fetch_assoc()) { echo '<option value="$row['product_name']">$row['product_name'];</option>}}</select></div><div class="col-sm-2"><input type="number" name="invoiceQty" id="invoice" class="form-control"></div><div class="col-sm-2"><input type="number" name="invoicePrice" id="invoicePrice" class="form-control" min="0"></div><div class="col-sm-3"><input type="number" name="invoiceTotal" id="invoiceTotal" class="form-control disable" min="0"></div></div><br></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
-        });  
-        $(document).on('click', '.btn_remove', function(){  
-            var button_id = $(this).attr("id");   
-            $('#row'+button_id+'').remove();  
-        });  
-        
- });  
 </script>

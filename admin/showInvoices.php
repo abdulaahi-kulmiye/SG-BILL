@@ -13,7 +13,7 @@
     else
     {
         $query = "
-        SELECT * FROM invoices ORDER BY invoice_id
+        SELECT * FROM invoices ORDER BY invoice_id DESC
         ";
     }
     $result = mysqli_query($conn, $query);
